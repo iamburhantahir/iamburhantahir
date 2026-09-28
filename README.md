@@ -14,7 +14,7 @@
   <a href="https://wa.me/923317575141"><img src="https://img.shields.io/badge/WhatsApp-+92%20331%207575141-0A0A0F?style=for-the-badge&logo=whatsapp&logoColor=C9F31D" alt="WhatsApp" /></a>
   <a href="https://www.linkedin.com/in/iamburhantahir/"><img src="https://img.shields.io/badge/LinkedIn-0A0A0F?style=for-the-badge&logo=linkedin&logoColor=C9F31D" alt="LinkedIn" /></a>
   <a href="mailto:contact@devfinix.com"><img src="https://img.shields.io/badge/Email-0A0A0F?style=for-the-badge&logo=gmail&logoColor=C9F31D" alt="Email" /></a>
-  <img src="https://komarev.com/ghpvc/?username=iamburhantahir&label=Profile%20Views&color=C9F31D&style=for-the-badge&base=5034" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=iamburhantahir&label=Profile%20Views&color=0A0A0F&style=for-the-badge&base=5034" alt="Profile views" />
 </p>
 
 <!-- ============================== ABOUT ============================== -->
@@ -23,7 +23,7 @@
   About Me
 </h2>
 
-<img align="right" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="340" alt="Developer coding animation" />
+<img align="right" src="./assets/about-code.svg" width="380" alt="Animated code editor: build, market, dominate — deployed to devfinix.com" />
 
 I'm **Burhan Tahir**, **Founder & CEO of [Devfinix](https://devfinix.com)** and a **full-stack developer from Pakistan 🇵🇰**. I build end-to-end products: web apps, SaaS platforms, mobile apps, APIs, e-commerce stores and the automation behind them. Then my team helps market them.
 
@@ -138,12 +138,8 @@ const burhan = {
 </h2>
 
 <p align="center">
-  <img height="170" src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/stats.svg" alt="GitHub stats" />
-  <img height="170" src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/top-langs.svg" alt="Top languages" />
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=iamburhantahir&hide_border=true&background=0A0A0F&ring=C9F31D&fire=C9F31D&currStreakNum=F5F5F7&sideNums=F5F5F7&currStreakLabel=C9F31D&sideLabels=A0A0B8&dates=A0A0B8&stroke=2A2A32" alt="GitHub streak" />
+  <img height="195" src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/stats.svg" alt="GitHub activity overview" />
+  <img height="195" src="https://streak-stats.demolab.com?user=iamburhantahir&hide_border=true&background=0A0A0F&ring=C9F31D&fire=C9F31D&currStreakNum=F5F5F7&sideNums=F5F5F7&currStreakLabel=C9F31D&sideLabels=A0A0B8&dates=A0A0B8&stroke=2A2A32" alt="GitHub streak" />
 </p>
 
 <p align="center">

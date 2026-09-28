@@ -25,28 +25,12 @@ jobs:
         with:
           node-version: 20
 
-      - name: Trophies & contribution graph
+      - name: Stats, trophies & contribution graph
         run: node scripts/generate-cards.mjs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USER: ${{ github.repository_owner }}
           OUT_DIR: dist
-
-      - name: Stats card
-        uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: stats
-          options: username=${{ github.repository_owner }}&show_icons=true&hide_border=true&include_all_commits=true&rank_icon=github&bg_color=0A0A0F&title_color=C9F31D&icon_color=C9F31D&text_color=F5F5F7&ring_color=C9F31D
-          path: dist/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Top languages card
-        uses: stats-organization/github-readme-stats-action@v2
-        with:
-          card: top-langs
-          options: username=${{ github.repository_owner }}&layout=compact&hide_border=true&langs_count=8&bg_color=0A0A0F&title_color=C9F31D&text_color=F5F5F7
-          path: dist/top-langs.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Contribution snake
         uses: Platane/snk@v3

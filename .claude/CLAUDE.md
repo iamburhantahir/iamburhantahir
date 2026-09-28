@@ -31,8 +31,9 @@ the profile page, so everything here is **public**.
 
 - `README.md`: the profile page
 - `assets/header.svg`, `assets/footer.svg`: self-hosted animated banner and footer
-- `scripts/generate-cards.mjs`: builds `trophies.svg` and `activity-graph.svg` from the GitHub GraphQL API
-- `.github/workflows/profile-assets.yml`: every 12h and on push, builds stats, top-langs, trophies,
+- `assets/about-code.svg`: animated code-editor card in About Me (the user rejected the stock coding GIF)
+- `scripts/generate-cards.mjs`: builds `stats.svg`, `trophies.svg` and `activity-graph.svg` from the GitHub contribution calendar (includes private work)
+- `.github/workflows/profile-assets.yml`: every 12h and on push, builds stats, trophies,
   activity graph and snake into the **`output` branch** (the README embeds them from there)
 - `.githooks/commit-msg`: strips AI attribution and blocks wrong authors (`git config core.hooksPath .githooks`)
 

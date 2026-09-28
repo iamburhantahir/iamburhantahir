@@ -1,4 +1,4 @@
-// Generates Devfinix-branded trophy and contribution-graph SVGs from live GitHub data.
+// Generates Devfinix-branded stats, trophy and contribution-graph SVGs from live GitHub data.
 // Run in CI:  GITHUB_TOKEN=... GH_USER=iamburhantahir OUT_DIR=dist node scripts/generate-cards.mjs
 // Preview:    MOCK=1 OUT_DIR=preview node scripts/generate-cards.mjs
 import { mkdir, writeFile } from "node:fs/promises";
@@ -62,6 +62,62 @@ function mockUser() {
 const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const fmt = (n) => (n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : String(n));
 
+// ---------------------------------------------------------------- calendar metrics
+// The contribution calendar includes private work (when enabled on the profile),
+// unlike repo-based stats, which only see public repositories.
+function metrics(u) {
+  const days = u.contributionsCollection.contributionCalendar.weeks.flatMap((w) => w.contributionDays);
+  const total = u.contributionsCollection.contributionCalendar.totalContributions;
+  const active = days.filter((d) => d.contributionCount > 0).length;
+  const busiest = days.reduce((m, d) => (d.contributionCount > m.contributionCount ? d : m), days[0]);
+  let longest = 0, run = 0;
+  for (const d of days) { run = d.contributionCount > 0 ? run + 1 : 0; longest = Math.max(longest, run); }
+  const last30 = days.slice(-30).reduce((s, d) => s + d.contributionCount, 0);
+  const years = Math.max(1, Math.floor((Date.now() - Date.parse(u.createdAt)) / (365.25 * 864e5)));
+  return { days, total, active, busiest, longest, last30, years };
+}
+
+// ---------------------------------------------------------------- overview card
+const ICONS = {
+  bolt: "M13 2 4 14h7l-1 8 9-12h-7l1-8z",
+  cal: "M7 2v3M17 2v3M3 9h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z",
+  fire: "M12 22c4 0 7-3 7-7 0-4-3-6-4-9-1 3-3 4-4 4 0-2 0-4-2-6-1 4-6 7-6 11 0 4 3 7 9 7z",
+  peak: "M3 20 9 10l4 6 3-4 5 8H3z",
+  trend: "M3 17l6-6 4 4 8-8M15 7h6v6",
+  clock: "M12 7v5l3 2M12 3a9 9 0 1 1 0 18 9 9 0 0 1 0-18z",
+};
+
+function statsSvg(u) {
+  const m = metrics(u);
+  const busiestDate = new Date(m.busiest.date).toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+  const rows = [
+    ["bolt", "Contributions (last year)", m.total.toLocaleString("en-US")],
+    ["trend", "Contributions (last 30 days)", m.last30.toLocaleString("en-US")],
+    ["cal", "Active days (last year)", String(m.active)],
+    ["fire", "Longest streak", `${m.longest} days`],
+    ["peak", "Busiest day", `${m.busiest.contributionCount} on ${busiestDate}`],
+    ["clock", "Building on GitHub", `${m.years} years`],
+  ];
+  const W = 495, H = 195;
+  const body = rows.map(([icon, label, value], i) => {
+    const y = 66 + i * 22;
+    return `<g class="row" style="animation-delay:${(0.1 + i * 0.1).toFixed(1)}s">
+      <g transform="translate(24 ${y - 13}) scale(.62)"><path d="${ICONS[icon]}" fill="none" stroke="${C.lime}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+      <text x="50" y="${y}" style="font:500 14px ${FONT};fill:${C.muted}">${esc(label)}</text>
+      <text x="${W - 24}" y="${y}" text-anchor="end" style="font:700 14px ${FONT};fill:${C.text}">${esc(value)}</text>
+    </g>`;
+  }).join("");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="GitHub activity overview for ${esc(USER)}">
+  <style>
+    .row { animation: slide .6s cubic-bezier(.16,1,.3,1) backwards; }
+    @keyframes slide { from { transform: translateX(-10px); } to { transform: none; } }
+  </style>
+  <rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="12" fill="${C.bg}" stroke="${C.border}"/>
+  <text x="24" y="34" style="font:700 18px ${FONT};fill:${C.lime}">${esc(u.name || USER)}'s GitHub Activity</text>
+  ${body}
+</svg>`;
+}
+
 // ---------------------------------------------------------------- trophies
 const RANKS = ["C", "B", "A", "AA", "AAA", "S", "SS", "SSS"];
 
@@ -96,18 +152,19 @@ function trophyCard(t, i) {
 }
 
 function trophiesSvg(u) {
-  const cc = u.contributionsCollection;
+  const m = metrics(u);
   const stars = u.repositories.nodes.reduce((s, r) => s + r.stargazerCount, 0);
-  const years = Math.max(1, Math.floor((Date.now() - Date.parse(u.createdAt)) / (365.25 * 864e5)));
+  // Locked trophies (value below the first step) are hidden rather than shown as empty cups.
   const trophies = [
-    { title: "Contributions", value: cc.contributionCalendar.totalContributions, steps: [1, 50, 200, 500, 1000, 2000, 4000, 8000] },
-    { title: "Commits", value: cc.totalCommitContributions + cc.restrictedContributionsCount, steps: [1, 20, 100, 250, 500, 1000, 2000, 4000] },
+    { title: "Contributions", value: m.total, steps: [1, 50, 200, 500, 1000, 2000, 4000, 8000] },
+    { title: "Active Days", value: m.active, steps: [1, 15, 40, 80, 120, 180, 250, 320] },
+    { title: "Longest Streak", value: m.longest, unit: "days", steps: [1, 3, 7, 14, 21, 30, 60, 100] },
+    { title: "Experience", value: m.years, unit: m.years === 1 ? "yr" : "yrs", steps: [1, 2, 3, 4, 5, 7, 10, 15] },
+    { title: "Followers", value: u.followers.totalCount, steps: [1, 5, 15, 30, 60, 100, 200, 500] },
     { title: "Repositories", value: u.repositories.totalCount, steps: [1, 5, 10, 20, 35, 50, 80, 120] },
     { title: "Pull Requests", value: u.pullRequests.totalCount, steps: [1, 5, 15, 30, 60, 100, 200, 500] },
-    { title: "Followers", value: u.followers.totalCount, steps: [1, 5, 15, 30, 60, 100, 200, 500] },
     { title: "Stars", value: stars, steps: [1, 5, 15, 30, 60, 100, 200, 500] },
-    { title: "Experience", value: years, unit: years === 1 ? "yr" : "yrs", steps: [1, 2, 3, 4, 5, 7, 10, 15] },
-  ];
+  ].filter((t) => t.value >= t.steps[0]).slice(0, 7);
   const w = trophies.length * 120;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="160" viewBox="0 0 ${w} 160" role="img" aria-label="GitHub trophies for ${esc(USER)}">
   <style>
@@ -125,7 +182,8 @@ function activitySvg(u) {
   const days = u.contributionsCollection.contributionCalendar.weeks.flatMap((w) => w.contributionDays).slice(-31);
   const W = 1000, H = 320, L = 60, R = 30, T = 70, B = 50;
   const max = Math.max(4, ...days.map((d) => d.contributionCount));
-  const niceMax = Math.ceil(max / 4) * 4;
+  const step = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500].find((v) => v * 4 >= max) || Math.ceil(max / 4);
+  const niceMax = step * 4;
   const x = (i) => L + (i * (W - L - R)) / (days.length - 1);
   const y = (v) => T + (H - T - B) * (1 - v / niceMax);
   const pts = days.map((d, i) => [x(i), y(d.contributionCount)]);
@@ -180,6 +238,7 @@ function activitySvg(u) {
 
 const user = await fetchUser();
 await mkdir(OUT, { recursive: true });
+await writeFile(`${OUT}/stats.svg`, statsSvg(user));
 await writeFile(`${OUT}/trophies.svg`, trophiesSvg(user));
 await writeFile(`${OUT}/activity-graph.svg`, activitySvg(user));
-console.log(`Wrote ${OUT}/trophies.svg and ${OUT}/activity-graph.svg`);
+console.log(`Wrote stats.svg, trophies.svg and activity-graph.svg to ${OUT}`);

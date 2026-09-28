@@ -33,8 +33,8 @@ important is self-hosted.** Don't reintroduce those services.
 | Widget | Source |
 |---|---|
 | Header / footer | `assets/header.svg`, `assets/footer.svg` (hand-written, animated, in repo) |
-| Stats + top languages | `stats-organization/github-readme-stats-action@v2` in `profile-assets.yml` → `output` branch |
-| Trophies + contribution graph | `scripts/generate-cards.mjs` (GitHub GraphQL) → `output` branch |
+| Stats overview, trophies, contribution graph | `scripts/generate-cards.mjs` (GitHub GraphQL contribution calendar) → `output` branch |
+| About Me editor animation | `assets/about-code.svg` (hand-written) |
 | Snake | `Platane/snk@v3` → `output` branch |
 | Typing SVG, streak, shields, skillicons, view counter | External, still working (checked 2026-09-28) |
 
@@ -62,13 +62,13 @@ Secondary (dark):     https://img.shields.io/badge/<Text>-0A0A0F?style=for-the-b
 Stat:                 https://img.shields.io/badge/<Value>-<Label>-C9F31D?style=for-the-badge&labelColor=0A0A0F
 ```
 
-**Profile views** (keeps the 5034 starting count; never drop `base`):
-`komarev.com/ghpvc/?username=iamburhantahir&label=Profile%20Views&color=C9F31D&style=for-the-badge&base=5034`
+**Profile views** (keeps the 5034 starting count; never drop `base`). Use `color=0A0A0F`: the counter always renders white text, so a lime fill makes the number unreadable:
+`komarev.com/ghpvc/?username=iamburhantahir&label=Profile%20Views&color=0A0A0F&style=for-the-badge&base=5034`
 
-**Stats action options**
-```
-show_icons=true&hide_border=true&include_all_commits=true&rank_icon=github&bg_color=0A0A0F&title_color=C9F31D&icon_color=C9F31D&text_color=F5F5F7&ring_color=C9F31D
-```
+**Why no github-readme-stats / top-langs cards:** they only see public repos. With 5 public repos the
+card showed Rank C, 0 stars, 23 commits and C++/CMake as top languages, which contradicts the full-stack
+profile. The calendar-based overview card counts private contributions too. Only bring those cards back
+with a PAT secret (`repo` + `read:user`) that the user creates.
 
 **Streak** (`streak-stats.demolab.com`)
 ```

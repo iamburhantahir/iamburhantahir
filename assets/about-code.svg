@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="340" viewBox="0 0 460 340" role="img" aria-label="Code editor: build, market, dominate. Deployed to devfinix.com">
+  <defs>
+    <linearGradient id="lime" x1="0" x2="1">
+      <stop offset="0" stop-color="#C9F31D"/>
+      <stop offset="1" stop-color="#E2FF59"/>
+    </linearGradient>
+    <clipPath id="win"><rect x="10" y="10" width="440" height="320" rx="14"/></clipPath>
+    <style>
+      text  { font: 500 13px 'Consolas', 'Fira Code', 'Courier New', monospace; }
+      .ln   { fill: #4A4A58; }
+      .kw   { fill: #C9F31D; }
+      .fn   { fill: #F5F5F7; font-weight: 700; }
+      .str  { fill: #A8CC18; }
+      .pl   { fill: #A0A0B8; }
+      .cm   { fill: #84849A; font-style: italic; }
+      .ui   { font: 600 11px 'Segoe UI', Helvetica, Arial, sans-serif; fill: #A0A0B8; }
+      .ok   { fill: #C9F31D; font-weight: 700; }
+      .hl   { animation: scan 8s steps(1) infinite; }
+      .caret{ animation: blink 1s steps(1) infinite; }
+      .bar  { animation: load 4s cubic-bezier(.65,0,.35,1) infinite; transform-origin: 0 0; }
+      .float{ animation: float 6s ease-in-out infinite; }
+      @keyframes scan {
+        0%   { transform: translateY(0); }    12.5% { transform: translateY(20px); }
+        25%  { transform: translateY(40px); } 37.5% { transform: translateY(60px); }
+        50%  { transform: translateY(80px); } 62.5% { transform: translateY(100px); }
+        75%  { transform: translateY(120px); } 87.5% { transform: translateY(140px); }
+      }
+      @keyframes blink { 50% { opacity: 0; } }
+      @keyframes load  { 0% { transform: scaleX(.05); } 70%,100% { transform: scaleX(1); } }
+      @keyframes float { 50% { transform: translateY(-6px); } }
+    </style>
+  </defs>
+
+  <g class="float">
+    <rect x="10" y="10" width="440" height="320" rx="14" fill="#0A0A0F" stroke="#2A2A32"/>
+    <g clip-path="url(#win)">
+      <!-- title bar -->
+      <rect x="10" y="10" width="440" height="34" fill="#111114"/>
+      <circle cx="30" cy="27" r="5" fill="#FF5F57"/>
+      <circle cx="47" cy="27" r="5" fill="#FEBC2E"/>
+      <circle cx="64" cy="27" r="5" fill="#28C840"/>
+      <rect x="170" y="17" width="120" height="20" rx="6" fill="#1A1A20"/>
+      <text x="230" y="31" text-anchor="middle" class="ui">ship.ts — devfinix</text>
+
+      <!-- moving line highlight -->
+      <rect class="hl" x="10" y="56" width="440" height="20" fill="#C9F31D" fill-opacity=".07"/>
+      <rect class="hl" x="10" y="56" width="3" height="20" fill="#C9F31D"/>
+
+      <!-- code -->
+      <g transform="translate(0 70)">
+        <text x="26" y="0" class="ln">1</text>
+        <text x="50" y="0"><tspan class="kw">import</tspan><tspan class="pl"> { build, market } </tspan><tspan class="kw">from</tspan><tspan class="str"> "devfinix"</tspan><tspan class="pl">;</tspan></text>
+        <text x="26" y="20" class="ln">2</text>
+        <text x="26" y="40" class="ln">3</text>
+        <text x="50" y="40"><tspan class="kw">const</tspan><tspan class="fn"> idea</tspan><tspan class="pl"> = </tspan><tspan class="kw">await</tspan><tspan class="pl"> client.</tspan><tspan class="fn">brief</tspan><tspan class="pl">();</tspan></text>
+        <text x="26" y="60" class="ln">4</text>
+        <text x="50" y="60"><tspan class="kw">const</tspan><tspan class="fn"> app</tspan><tspan class="pl"> = </tspan><tspan class="kw">await</tspan><tspan class="fn"> build</tspan><tspan class="pl">(idea, {</tspan></text>
+        <text x="26" y="80" class="ln">5</text>
+        <text x="50" y="80"><tspan class="pl">  stack: [</tspan><tspan class="str">"Next.js"</tspan><tspan class="pl">, </tspan><tspan class="str">"Node"</tspan><tspan class="pl">, </tspan><tspan class="str">"Flutter"</tspan><tspan class="pl">],</tspan></text>
+        <text x="26" y="100" class="ln">6</text>
+        <text x="50" y="100" class="pl">});</text>
+        <text x="26" y="120" class="ln">7</text>
+        <text x="50" y="120"><tspan class="kw">await</tspan><tspan class="fn"> market</tspan><tspan class="pl">(app, [</tspan><tspan class="str">"SEO"</tspan><tspan class="pl">, </tspan><tspan class="str">"Ads"</tspan><tspan class="pl">]);</tspan></text>
+        <text x="26" y="140" class="ln">8</text>
+        <text x="50" y="140" class="cm">// → you dominate 🚀</text>
+        <rect class="caret" x="206" y="129" width="8" height="15" fill="#C9F31D"/>
+      </g>
+
+      <!-- terminal -->
+      <rect x="10" y="236" width="440" height="94" fill="#111114"/>
+      <line x1="10" x2="450" y1="236" y2="236" stroke="#2A2A32"/>
+      <text x="26" y="260" class="ui">TERMINAL</text>
+      <text x="26" y="284"><tspan class="kw">$</tspan><tspan class="pl"> npm run ship</tspan></text>
+      <rect x="26" y="296" width="300" height="6" rx="3" fill="#1A1A20"/>
+      <rect class="bar" x="26" y="296" width="300" height="6" rx="3" fill="url(#lime)"/>
+      <text x="340" y="303" class="ok">✓ live</text>
+      <text x="26" y="322" class="pl" style="font-size:12px">deployed → <tspan class="ok">devfinix.com</tspan></text>
+    </g>
+  </g>
+</svg>
