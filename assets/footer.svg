@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="140" viewBox="0 0 1200 140" role="img" aria-label="We build, we market, you dominate. devfinix.com">
+  <defs>
+    <linearGradient id="lime" x1="0" x2="1">
+      <stop offset="0" stop-color="#C9F31D"/>
+      <stop offset="1" stop-color="#E2FF59"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="1200" height="140" rx="18"/></clipPath>
+    <style>
+      .line  { font: 700 22px 'Segoe UI', Inter, Helvetica, Arial, sans-serif; fill: #F5F5F7; }
+      .wave1 { animation: slide 10s linear infinite; }
+      .wave2 { animation: slide 15s linear infinite reverse; }
+      .fade  { animation: glow 3s ease-in-out infinite; }
+      @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-600px); } }
+      @keyframes glow { 50% { opacity: .75; } }
+    </style>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="140" fill="#0A0A0F"/>
+    <path class="wave2" fill="#1A1A20" d="M0 30 Q150 60 300 30 T600 30 T900 30 T1200 30 T1500 30 T1800 30 V0 H0 Z"/>
+    <path class="wave1" fill="url(#lime)" fill-opacity="0.9" d="M0 14 Q150 38 300 14 T600 14 T900 14 T1200 14 T1500 14 T1800 14 V0 H0 Z"/>
+    <text x="600" y="96" text-anchor="middle" class="line fade">We build, we market, <tspan fill="#C9F31D">you dominate.</tspan></text>
+  </g>
+</svg>

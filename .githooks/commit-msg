@@ -1,0 +1,14 @@
+#!/bin/sh
+# Commits in this repo are authored by Burhan Tahir only.
+# Strip any AI attribution lines, then refuse if an AI/old-handle author slipped through.
+msg_file="$1"
+tmp="$msg_file.tmp"
+grep -viE '^(co-authored-by:.*(claude|anthropic)|.*generated with \[?claude)' "$msg_file" > "$tmp"
+mv "$tmp" "$msg_file"
+
+author="$(git var GIT_AUTHOR_IDENT)"
+if printf '%s' "$author" | grep -qiE 'claude|anthropic|shekhobaba'; then
+  echo "commit-msg: author must be Burhan Tahir (got: $author)" >&2
+  echo "Run: git config user.name \"Burhan Tahir\"" >&2
+  exit 1
+fi

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="t d">
+  <title id="t">Burhan Tahir</title>
+  <desc id="d">Founder and CEO at Devfinix, full-stack developer</desc>
+  <defs>
+    <linearGradient id="lime" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#C9F31D"/>
+      <stop offset="1" stop-color="#E2FF59"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#C9F31D" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#C9F31D" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#F5F5F7" stroke-opacity="0.04"/>
+    </pattern>
+    <clipPath id="frame"><rect width="1200" height="300" rx="18"/></clipPath>
+    <style>
+      .name  { font: 800 76px 'Segoe UI', Inter, Helvetica, Arial, sans-serif; letter-spacing: -2px; fill: #F5F5F7; }
+      .role  { font: 600 22px 'Segoe UI', Inter, Helvetica, Arial, sans-serif; fill: #A0A0B8; }
+      .tag   { font: 700 13px 'Consolas', 'Fira Code', monospace; letter-spacing: 3px; fill: #0A0A0F; }
+      .url   { font: 600 16px 'Consolas', 'Fira Code', monospace; fill: #C9F31D; }
+      .fade1 { animation: up .9s cubic-bezier(.16,1,.3,1) .1s backwards; }
+      .fade2 { animation: up .9s cubic-bezier(.16,1,.3,1) .35s backwards; }
+      .fade3 { animation: up .9s cubic-bezier(.16,1,.3,1) .6s backwards; }
+      .wave1 { animation: slide 9s linear infinite; }
+      .wave2 { animation: slide 14s linear infinite reverse; }
+      .orb   { animation: pulse 5s ease-in-out infinite; transform-origin: 960px 90px; }
+      .caret { animation: blink 1s steps(1) infinite; }
+      @keyframes up    { from { transform: translateY(24px); } to { transform: translateY(0); } }
+      @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-600px); } }
+      @keyframes pulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.15); opacity: 1; } }
+      @keyframes blink { 50% { opacity: 0; } }
+    </style>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="300" fill="#0A0A0F"/>
+    <rect width="1200" height="300" fill="url(#grid)"/>
+    <circle class="orb" cx="960" cy="90" r="220" fill="url(#glow)"/>
+
+    <!-- waves -->
+    <path class="wave2" fill="#1A1A20" d="M0 250 Q150 220 300 250 T600 250 T900 250 T1200 250 T1500 250 T1800 250 V300 H0 Z"/>
+    <path class="wave1" fill="url(#lime)" fill-opacity="0.9" d="M0 270 Q150 245 300 270 T600 270 T900 270 T1200 270 T1500 270 T1800 270 V300 H0 Z"/>
+
+    <!-- content -->
+    <g class="fade1">
+      <rect x="80" y="54" width="206" height="28" rx="14" fill="#C9F31D"/>
+      <text x="183" y="73" text-anchor="middle" class="tag">FOUNDER &amp; CEO</text>
+    </g>
+    <text x="76" y="156" class="name fade2">Burhan Tahir</text>
+    <g class="fade3">
+      <text x="80" y="196" class="role">Full-Stack Developer · Web · SaaS · Mobile · AI &amp; Automation</text>
+      <text x="80" y="228" class="url">&gt; devfinix.com<tspan class="caret">_</tspan></text>
+    </g>
+
+    <!-- brand mark -->
+    <g transform="translate(960 150)"><g class="fade3">
+      <rect x="-86" y="-40" width="172" height="80" rx="18" fill="#111114" stroke="#2A2A32"/>
+      <text x="0" y="-6" text-anchor="middle" style="font:800 26px 'Segoe UI',Helvetica,Arial,sans-serif;fill:#F5F5F7;letter-spacing:1px">DEV<tspan fill="#C9F31D">FINIX</tspan></text>
+      <text x="0" y="20" text-anchor="middle" style="font:600 11px 'Consolas',monospace;fill:#A0A0B8;letter-spacing:1.5px">WE BUILD · WE MARKET</text>
+    </g></g>
+  </g>
+</svg>

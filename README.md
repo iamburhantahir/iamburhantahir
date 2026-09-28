@@ -1,6 +1,6 @@
 <!-- ============================== HEADER ============================== -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0A0A0F,55:1A1A20,100:C9F31D&height=230&section=header&text=Burhan%20Tahir&fontSize=72&fontColor=F5F5F7&animation=fadeIn&fontAlignY=36&desc=Founder%20%26%20CEO%20%40%20Devfinix%20%E2%80%A2%20Full-Stack%20Developer&descAlignY=57&descSize=20" alt="Burhan Tahir" />
+  <a href="https://devfinix.com"><img src="./assets/header.svg" alt="Burhan Tahir — Founder &amp; CEO at Devfinix, Full-Stack Developer" width="100%" /></a>
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
   <a href="https://wa.me/923317575141"><img src="https://img.shields.io/badge/WhatsApp-+92%20331%207575141-0A0A0F?style=for-the-badge&logo=whatsapp&logoColor=C9F31D" alt="WhatsApp" /></a>
   <a href="https://www.linkedin.com/in/iamburhantahir/"><img src="https://img.shields.io/badge/LinkedIn-0A0A0F?style=for-the-badge&logo=linkedin&logoColor=C9F31D" alt="LinkedIn" /></a>
   <a href="mailto:contact@devfinix.com"><img src="https://img.shields.io/badge/Email-0A0A0F?style=for-the-badge&logo=gmail&logoColor=C9F31D" alt="Email" /></a>
-  <img src="https://komarev.com/ghpvc/?username=iamburhantahir&label=Profile%20Views&color=C9F31D&style=for-the-badge" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=iamburhantahir&label=Profile%20Views&color=C9F31D&style=for-the-badge&base=5034" alt="Profile views" />
 </p>
 
 <!-- ============================== ABOUT ============================== -->
@@ -23,9 +23,7 @@
   About Me
 </h2>
 
-<table>
-<tr>
-<td width="60%">
+<img align="right" src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="340" alt="Developer coding animation" />
 
 I'm **Burhan Tahir**, **Founder & CEO of [Devfinix](https://devfinix.com)** and a **full-stack developer from Pakistan 🇵🇰**. I build end-to-end products: web apps, SaaS platforms, mobile apps, APIs, e-commerce stores and the automation behind them. Then my team helps market them.
 
@@ -39,12 +37,7 @@ I'm **Burhan Tahir**, **Founder & CEO of [Devfinix](https://devfinix.com)** and 
 - 💬 Ask me about **SaaS architecture, Next.js, Flutter, or scaling a product**
 - 📫 **[contact@devfinix.com](mailto:contact@devfinix.com)** · **[WhatsApp +92 331 7575141](https://wa.me/923317575141)**
 
-</td>
-<td width="40%" align="center">
-  <img src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/Coding/programmer.gif" width="270" alt="Coding animation" />
-</td>
-</tr>
-</table>
+<br clear="right" />
 
 ```ts
 const burhan = {
@@ -145,8 +138,8 @@ const burhan = {
 </h2>
 
 <p align="center">
-  <img height="170" src="https://github-readme-stats.vercel.app/api?username=iamburhantahir&show_icons=true&hide_border=true&include_all_commits=true&count_private=true&rank_icon=github&bg_color=0A0A0F&title_color=C9F31D&icon_color=C9F31D&text_color=F5F5F7&ring_color=C9F31D" alt="GitHub stats" />
-  <img height="170" src="https://github-readme-stats.vercel.app/api/top-langs/?username=iamburhantahir&layout=compact&hide_border=true&langs_count=8&bg_color=0A0A0F&title_color=C9F31D&text_color=F5F5F7" alt="Top languages" />
+  <img height="170" src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/stats.svg" alt="GitHub stats" />
+  <img height="170" src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/top-langs.svg" alt="Top languages" />
 </p>
 
 <p align="center">
@@ -154,16 +147,14 @@ const burhan = {
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=iamburhantahir&hide_border=true&area=true&bg_color=0A0A0F&color=A0A0B8&line=C9F31D&point=F5F5F7&area_color=C9F31D&title_color=C9F31D" alt="Contribution graph" width="100%" />
+  <img src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/activity-graph.svg" alt="Contribution activity graph" width="100%" />
 </p>
 
 <!-- ============================== TROPHIES ============================== -->
 <h2>🏆 GitHub Trophies</h2>
 
 <p align="center">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=iamburhantahir&theme=matrix&no-frame=true&no-bg=true&margin-w=4&row=1" alt="GitHub trophies" />
-  </a>
+  <img src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/trophies.svg" alt="GitHub trophies" width="100%" />
 </p>
 
 <!-- ============================== SNAKE ============================== -->
@@ -201,5 +192,5 @@ const burhan = {
 
 <!-- ============================== FOOTER ============================== -->
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:C9F31D,45:1A1A20,100:0A0A0F&height=120&section=footer" alt="Footer" />
+  <img src="./assets/footer.svg" alt="We build, we market, you dominate." width="100%" />
 </p>
