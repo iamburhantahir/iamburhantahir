@@ -132,10 +132,7 @@ const burhan = {
 </p>
 
 <!-- ============================== STATS ============================== -->
-<h2>
-  <img src="https://media.giphy.com/media/fLsd3E4rDo4jHSU5Ob/giphy.gif" width="30" alt="stats" />
-  GitHub Stats
-</h2>
+<h2>📊 GitHub Stats</h2>
 
 <p align="center">
   <img height="195" src="https://raw.githubusercontent.com/iamburhantahir/iamburhantahir/output/stats.svg" alt="GitHub activity overview" />
